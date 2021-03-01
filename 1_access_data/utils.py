@@ -24,12 +24,14 @@ def resize_image(img):
 
 
 class Screenshot(object):
-    SRC_W = 640
-    SRC_H = 480
+    # PS Remote Play = (0,40,960,560)
+    # Emulator = (0,60,640,480)
+    SRC_W = 960
+    SRC_H = 560
     SRC_D = 3
 
     OFFSET_X = 0
-    OFFSET_Y = 60
+    OFFSET_Y = 40
 
 
 class Sample:
@@ -70,13 +72,22 @@ class XboxController(object):
         self._monitor_thread.start()
 
 
+    # def read(self):
+    #     x = self.LeftJoystickX
+    #     y = self.LeftJoystickY
+    #     a = self.A
+    #     b = self.X # b=1, x=2
+    #     rb = self.RightBumper
+    #     return [x, y, a, b, rb]
+    
+    # GTA
     def read(self):
         x = self.LeftJoystickX
         y = self.LeftJoystickY
-        a = self.A
-        b = self.X # b=1, x=2
-        rb = self.RightBumper
-        return [x, y, a, b, rb]
+        r = self.RightTrigger
+        l = self.LeftTrigger
+        b = self.RightBumper
+        return [x, y, r, l, b]
 
 
     def _monitor_controller(self):
