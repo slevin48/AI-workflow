@@ -1,0 +1,10 @@
+numpy
+# Tensorflow
+# Keras
+Pillow
+matplotlib==3.2
+# mkdir_p
+h5py==2.10.0
+mss
+inputs
+scikit-image
