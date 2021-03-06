@@ -1,6 +1,6 @@
 numpy
-# Tensorflow
-# Keras
+Tensorflow
+Keras
 Pillow
 matplotlib==3.2
 # mkdir_p

@@ -27,7 +27,7 @@ else:
     import ttk
     import tkMessageBox
 
-from utils import Screenshot, XboxController
+from utils import Screenshot, Controller
 
 IMAGE_SIZE = (320, 240)
 IDLE_SAMPLE_RATE = 1500
@@ -46,7 +46,7 @@ class MainWindow():
         self.root.resizable(False, False)
 
         # Init controller
-        self.controller = XboxController()
+        self.controller = Controller()
 
          # Create GUI
         self.create_main_panel()
