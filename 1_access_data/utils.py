@@ -67,7 +67,7 @@ class Controller(object):
         self.UpDPad = 0
         self.DownDPad = 0
 
-        self._monitor_thread = threading.Thread(target=self._monitor_controller, args=())
+        self._monitor_thread = threading.Thread(target=self.monitor_controller, args=())
         self._monitor_thread.daemon = True
         self._monitor_thread.start()
 
@@ -90,7 +90,7 @@ class Controller(object):
         return [x, y, r, l, b]
 
 
-    def _monitor_controller(self):
+    def monitor_controller(self):
         while True:
             events = get_gamepad()
             for event in events:

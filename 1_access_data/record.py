@@ -30,8 +30,8 @@ else:
 from utils import Screenshot, Controller
 
 IMAGE_SIZE = (320, 240)
-IDLE_SAMPLE_RATE = 1500
-SAMPLE_RATE = 200
+IDLE_SAMPLE_RATE = 100
+SAMPLE_RATE = 50
 
 class MainWindow():
     """ Main frame of the application
