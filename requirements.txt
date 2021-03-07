@@ -9,3 +9,6 @@ mss
 inputs
 scikit-image
 opencv-python
+pandas
+fsspec
+s3fs

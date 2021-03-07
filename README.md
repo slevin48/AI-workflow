@@ -34,3 +34,7 @@ Ways to access ipnuts:
 **MATLAB Deep Learning toolbox**
 
 ![matlab_deep_learning](img/matlab_deep_learning.png)
+
+
+## Sources:
+Based on [TensorKart](https://github.com/kevinhughes27/TensorKart)
