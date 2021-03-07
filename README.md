@@ -58,7 +58,7 @@ Ways to access inputs:
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
 |1|'samples/2021-03-06-1/img_0.png|-0.015747|-0.023621|0.000000|0.0|0|
 
-![test](img\2021-03-06-1_img_0.png)
+![test](img/2021-03-06-1_img_0.png)
 
 ```python
 >>> joystick = model.predict(vec, batch_size=1)[0]
