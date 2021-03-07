@@ -6,7 +6,12 @@ from keras.layers import Dense, Dropout, Flatten
 from keras.layers import Conv2D
 from keras import optimizers
 from keras import backend as K
-from utils import Sample
+# from utils import Sample
+
+class Sample:
+    IMG_W = 200
+    IMG_H = 66
+    IMG_D = 3
 
 # Global variable
 OUT_SHAPE = 5
@@ -64,4 +69,9 @@ if __name__ == '__main__':
     model.compile(loss=customized_loss, optimizer=optimizers.Adam())
     model.fit(x_train, y_train, batch_size=batch_size, epochs=epochs, shuffle=True, validation_split=0.1)
 
-    model.save_weights('model_weights.h5')
+    
+    model.save('log/deep.model')
+    model.save_weights('log/model_weights.h5')
+
+
+# tensorboard --logdir=foo:D:\devel\AI-workflow\log
