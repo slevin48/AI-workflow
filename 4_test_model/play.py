@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-from utils import resize_image, XboxController
+from utils import resize_image, Controller
 from termcolor import cprint
 
 import gym
@@ -17,7 +17,7 @@ class Actor(object):
         self.model.load_weights('model_weights.h5')
 
         # Init contoller for manual override
-        self.real_controller = XboxController()
+        self.real_controller = Controller()
 
     def get_action(self, obs):
 
