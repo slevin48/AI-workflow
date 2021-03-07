@@ -26,7 +26,7 @@ Ways to access ipnuts:
 
 **Dataset browsing apps**
 
-![matlab_app](img/matlab_desktop_app.png)
+![matlab_app](img/matlab_desktop_app_rocket.png)
 
 
 ## 3. <a name="train"></a>Train model 
