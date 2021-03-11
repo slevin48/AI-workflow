@@ -80,14 +80,14 @@ class Controller(object):
     #     rb = self.RightBumper
     #     return [x, y, a, b, rb]
     
-    # GTA
+    # GTA/Need for Speed
     def read(self):
         x = self.LeftJoystickX
-        y = self.LeftJoystickY
         r = self.RightTrigger
         l = self.LeftTrigger
-        b = self.RightBumper
-        return [x, y, r, l, b]
+        a = self.A
+        b = self.Y
+        return [x, r, l, a, b]
 
 
     def monitor_controller(self):
