@@ -12,3 +12,4 @@ opencv-python
 pandas
 fsspec
 s3fs
+streamlit

@@ -9,40 +9,71 @@
 4. [Test model](#test)
 
 
+![gta](img/videoPlayer-full-view.gif)
+
 ## 1. <a name="access"></a>Access data
 
-Ways to access inputs:
 
-* [PyWin32](https://pypi.org/project/pywin32/) to record keyboard
-* [PyGame](pygame.org) to access [joystick](https://www.pygame.org/docs/ref/joystick.html) or [keyboard](https://www.pygame.org/docs/ref/key.html)
+**Get images and controller data**
 
-![record_samples](img/record_samples.png)
+```matlab
+training_dataset = "2021-03-06-1";
+i = 1;
+training_img = imread("D:\devel\AI-workflow\samples2\"+training_dataset+"\img_"+string(i)+".png");
+imshow(training_img)
+```
 
-![ps4_controller_x](img/ps4_controller_x.png)
+![figure_1.png](img/figure_1.png)
+
+
+```matlab
+data = readtable("D:\devel\AI-workflow\samples2\"+training_dataset+"\data.csv");
+data = renamevars(data,["Var1","Var2","Var3","Var4","Var5","Var6"],["img", "x", "y", "r", "l", "b"]);
+data
+```
 
 | |img|x|y|r|l|b|
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
-|1|'samples/2021-03-01-...|-0.0157|0|0|0|0|
-|2|'samples/2021-03-01-...|-0.0157|0|0|0|0|
-|3|'samples/2021-03-01-...|-0.0157|0.0079|0.1289|0|0|
-|4|'samples/2021-03-01-...|-0.1496|0.0709|0.9961|0|0|
-|5|'samples/2021-03-01-...|0|-0.0079|0.9961|0|0|
-|6|'samples/2021-03-01-...|-0.0079|-0.0236|0.9961|0|0|
-|7|'samples/2021-03-01-...|0.2205|-0.0787|0.9961|0|0|
-|8|'samples/2021-03-01-...|-0.0709|-0.0157|0.9961|0|0|
-|9|'samples/2021-03-01-...|-0.0079|-0.0315|0.9961|0|0|
-|10|'samples/2021-03-01-...|0|-0.0157|0.9961|0|0|
-|11|'samples/2021-03-01-...|-0.0709|-0.0472|0.9961|0|0|
-|12|'samples/2021-03-01-...|0.0079|0|0.9961|0|0|
-|13|'samples/2021-03-01-...|0|0.0472|0.9961|0|0|
-|14|'samples/2021-03-01-...|0.0079|0|0.9961|0|0|
+|1|'samples/2021-03-06-...|-0.0157|-0.0079|0|0|0|
+|2|'samples/2021-03-06-...|-0.0157|-0.0157|0|0|0|
+|3|'samples/2021-03-06-...|-0.0157|-0.0079|0|0|0|
+|4|'samples/2021-03-06-...|-0.0157|-0.0079|0|0|0|
+|5|'samples/2021-03-06-...|-0.0236|-0.0079|0|0|0|
+|6|'samples/2021-03-06-...|-0.0157|-0.0079|0|0|0|
+|7|'samples/2021-03-06-...|-0.0157|-0.0079|0|0|0|
+|8|'samples/2021-03-06-...|-0.0157|-0.0079|0|0|0|
+|9|'samples/2021-03-06-...|-0.0157|-0.0157|0|0|0|
+|10|'samples/2021-03-06-...|-0.0157|-0.0079|0.9961|0|0|
 
 
+```matlab
+plot(data.x)
+```
+
+![figure_2.png](img/figure_2.png)
+
+**Record from video game**
+
+![record_samples](img/record_samples.png)
+
+*Controller class update* [utils.py](1_access_data/utils.py)
+```python
+# GTA/Need for Speed
+    def read(self):
+        x = self.LeftJoystickX
+        r = self.RightTrigger
+        l = self.LeftTrigger
+        a = self.A
+        b = self.Y
+        return [x, r, l, a, b]
+```
 ## 2. <a name="prepare"></a>Prepare data
 
 **Dataset browsing apps**
 
 ![matlab_app](img/matlab_desktop_app_rocket.png)
+
+![streamlit_app](img/streamlit_app_nfs.png)
 
 
 ## 3. <a name="train"></a>Train model 
