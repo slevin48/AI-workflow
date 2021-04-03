@@ -1,6 +1,5 @@
-# AI-workflow
-🤖 AI workflow: Data access - Preparation - Training - Test
-
+# 🤖 AI-workflow
+Using MATLAB & Python
 
 **Content:**
 1. [Access data](#access)
@@ -69,8 +68,25 @@ plot(data.x)
 ```
 ## 2. <a name="prepare"></a>Prepare data
 
+Run `python utils.py prepare samples/*` with an array of sample directories to build an `X` and `y` matrix for training. (zsh will expand samples/* to all the directories. Passing a glob directly also works)
+
+`X` is a 3-Dimensional array of images
+
+`y` is the expected joystick ouput as an array:
+
+```
+  [0] joystick x axis
+  [1] button r
+  [2] button l
+  [3] button a
+  [4] button b
+```
+
+*(GTA/Need For Speed Config)*
+
 **Dataset browsing apps**
 
+*(Previous records of Rocket League have a different controller config)*
 ![matlab_app](img/matlab_desktop_app_rocket.png)
 
 ![streamlit_app](img/streamlit_app_nfs.png)
@@ -78,12 +94,39 @@ plot(data.x)
 
 ## 3. <a name="train"></a>Train model 
 
+The Deep Learning model used is the one from NVIDIA in this famous [paper](https://arxiv.org/pdf/1604.07316.pdf) from 2016:
+![nvidia_network](img/nvidia_network.png)
+
 **MATLAB Deep Learning toolbox**
 
 ![matlab_deep_learning](img/matlab_deep_learning.png)
 
 
 ## 4. <a name="test"></a>Test model
+
+**Test pre-trained vehicle detector using [aggregate channel features](https://fr.mathworks.com/help/driving/ref/vehicledetectoracf.html)**
+
+```matlab
+detector = vehicleDetectorACF('full-view'); 
+% use front-rear-view on highway scenario
+vp = vision.VideoPlayer ;
+
+reset(imds);
+reset(vp)
+while hasdata( imds )
+    I = read( imds );
+    [bboxes,scores] = detect(detector,I);
+    if ~isempty( bboxes )
+        I = insertObjectAnnotation(I,'rectangle',bboxes,scores);
+    end
+    step( vp, I )
+    drawnow
+end 
+```
+
+![figure_3.png](img/figure_3.png)
+
+**Test model trained on supervised dataset**
 
 | |img|x|y|r2|l2|r1|
 |:--:|:--:|:--:|:--:|:--:|:--:|:--:|
