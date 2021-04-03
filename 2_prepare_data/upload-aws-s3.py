@@ -4,7 +4,7 @@ import boto3
 s3_client = boto3.client('s3')
 s3_bucket = "aiworkflow"
 
-training_dataset = "2021-03-06-1"
+training_dataset = "2021-03-11-2"
 
 training_files = os.listdir("samples/"+training_dataset)
 
