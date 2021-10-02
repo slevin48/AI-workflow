@@ -91,6 +91,8 @@ Run `python utils.py prepare samples/*` with an array of sample directories to b
 
 ![streamlit_app](img/streamlit_app_nfs.png)
 
+![streamlit_app2](img/streamlit_app_unity.png)
+
 
 ## 3. <a name="train"></a>Train model 
 
